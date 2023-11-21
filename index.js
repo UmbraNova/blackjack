@@ -9,11 +9,11 @@ let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
 
 function startGame() {
-    renderGame()
-    cardsEl.textContent = "Cards: "
-    sumEl.textContent = "Sum: "
+    // cardsEl.textContent = "Cards: "
+    // sumEl.textContent = "Sum: "
     messageEl.textContent = "Want to play a round?"
-    sum = 0
+    sum = firstCard + secondCard
+    renderGame()
 }
 
 function renderGame() {
