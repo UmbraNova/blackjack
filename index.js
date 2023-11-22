@@ -18,13 +18,14 @@ playerEl.textContent = player.name + ": $" + player.chips
 
 
 function depositChips() {
-    if (isAlive) {
-        player.chips += parseInt(prompt("How much?"))
-        playerEl.textContent = player.name + ": $" + player.chips
-        renderGame()
-    } else {
-        alert("You need to start the game!")
-    }
+        let playerDeposit = parseInt(prompt("How much to deposit? "))
+
+        if (Number.isInteger(playerDeposit)) {
+            player.chips += playerDeposit
+            playerEl.textContent = player.name + ": $" + player.chips
+            hasBlackJack === false
+            renderGame()
+        }
 }
 
 
@@ -40,22 +41,25 @@ function getRandomCard() {
     }
 }
 
+function initPlayer() {
+    player.name = prompt("Who is playing? ")
+}
 
 function startGame() {
+    if (player.chips >= 20 && player.name === "unknown") {
+        initPlayer()
+    } else if (player.chips < 20) {
+        alert("Insufficient funds!")
+    }
 
     $(".decoration-el").removeClass("animate-dec");
     $(".win-el").removeClass("animate-win");
     
-    if (player.name === "unknown") {
-        player.name = prompt("Who is playing? ")
-        player.chips = parseInt(prompt("How much money? "))
-    }
     
-    if (player.chips <= 0) {
+    if (player.chips < 20) {
         playerEl.textContent = "Out of money!"
         cardsEl.textContent = "Cards: "
         sumEl.textContent = "Sum: "
-    } else if (player.chips < 20) {
         messageEl.textContent = "Insufficient funds!"
     } else {
         hasBlackJack = false
@@ -72,7 +76,7 @@ function startGame() {
 }
 
 function renderGame() {
-    
+
     cardsEl.textContent = "Cards: "
     for (let i = 0; i < cards.length; i++) {
         cardsEl.textContent += cards[i] + " "
@@ -81,7 +85,7 @@ function renderGame() {
     sumEl.textContent = "Sum: " + sum
     if (sum <= 20) {
         message = "Do you want to draw a new card?"
-    } else if (sum === 21) {
+    } else if (sum === 21 && !hasBlackJack) {
         message = "You've got Blackjack!"
         player.chips += 60
         playerEl.textContent = player.name + ": $" + player.chips
