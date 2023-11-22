@@ -3,14 +3,27 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <h1>Blackjack</h1>
-        <p id="message-el">Want to play a round?</p>
-        <p id="cards-el">Cards:</p>
-        <p id="sum-el">Sum:</p>
-        <div>
-        <button onclick="startGame()">START GAME</button>
-        <button onclick="newCard()">NEW CARD</button>
-        </div>
+        <main>
+            <h1>Blackjack</h1>
+            <p id="message-el">Want to play a round?</p>
+            <p id="cards-el">Cards:</p>
+            <p id="sum-el">Sum:</p>
+            <button onclick="startGame()">START GAME $20</button>
+            <button onclick="newCard()">NEW CARD</button>
+            <button onclick="depositChips()">DEPOSIT FUNDS</button>
+            <p id="player-el"></p>
+            <div>
+                <div class="decoration-el"></div>
+                <div class="decoration-el"></div>
+            </div>
+            <div>
+                <div class="win-el"><p id="name-el"></p></div>
+            </div>
+        </main>
+        <script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
         <script src="index.js"></script>
     </body>
 </html>

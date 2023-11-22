@@ -1,29 +1,37 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
-    background-image: url("images/table.png");
-    background-size: cover;
     font-weight: bold;
     color: white;
     text-align: center;
+    max-width: 900px;
+    margin: auto;
+    background: linear-gradient(-45deg, rgb(57, 25, 25), rgb(107, 15, 15), rgb(57, 25, 25));
 }
 
-h1 {
-    color: goldenrod;
+main {
+    margin-top: 50px;
+    background-image: url("images/poker.jpg");
+    height: 80vh;
+    background-size: cover;
+    border: 5px solid black;
+    border-radius: 20px;
+    position: relative;
 }
 
-#message-el {
-    font-style: italic;
-}
+h1 {color: goldenrod;}
+
+#message-el {font-style: italic;}
 
 button {
-    color: #016f32;
+    /* color: #016f32; */
+    color: black;
     width: 150px;
     background: goldenrod;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-weight: bold;
     border: none;
-    border-radius: 2px;
+    border-radius: 15px;
 }
 
 div {
@@ -32,4 +40,58 @@ div {
     justify-content: space-between;
     align-items: center;
     height: 64px;
+}
+
+.decoration-el {
+    position: absolute;
+    width: 50px;
+    height: 0;
+    background-color: goldenrod;
+    right: 15px;
+    bottom: 0;
+    border-radius: 10px;
+}
+
+.decoration-el:last-of-type {
+    position: absolute;
+    left: 15px;
+}
+
+.win-el {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    bottom: 0;
+    border-radius: 20px 20px 0 0;
+    font-size: 24px;
+}
+
+.animate-dec {animation: decoration-anim 2s ease-in-out;}
+
+.animate-win {animation: win-anim 2s ease-in-out;}
+
+@keyframes win-anim {
+    0% {
+        background-color: rgb(107, 15, 15);
+        height: 0;
+        color: transparent
+    }
+    100% {
+        background-color: goldenrod;
+        height: 400px;
+    }
+}
+
+
+@keyframes decoration-anim {
+    0% {
+        background-color: rgb(107, 15, 15);
+        margin-bottom: 100vh;
+        height: 0vh;
+    }
+    100% {
+        background-color: goldenrod;
+        margin-bottom: 0vh;
+        height: 140vh;
+    }
 }
